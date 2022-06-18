@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { HomeService } from './home/home.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'instaplay';
+  loadingSpninerHide = true;
+  constructor(private homeser: HomeService, private cdRef: ChangeDetectorRef){}
+  ngOnInit(): void{
+    // this.homeser.loadingSpinner.subscribe((data: boolean) => {
+    //   this.loadingSpninerHide = data;
+    //   this.cdRef.detectChanges();
+    // });
+  }
 }

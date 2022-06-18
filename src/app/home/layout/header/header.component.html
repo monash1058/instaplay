@@ -1,0 +1,11 @@
+<div class="topnav">
+    <div class="container-header">
+        <a><img routerLink="/home/movies" src="../../../../assets/images/title.png" alt=""></a>
+        <i class="fa fa-play" aria-hidden="true"></i>
+    </div>
+    <div class="club" *ngIf="isSearch">
+        <input type="text" #search placeholder="Search Movies" name="search" (keyup)="searchMethod($event);"
+            (search)="clearSearch();">
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </div>
+</div>

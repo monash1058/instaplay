@@ -21,7 +21,6 @@ export class MovieListComponent implements OnInit {
     this.getMoviesData();
     this.homeService.searchData.subscribe((res: any) => {
       if (res.value === '') {
-        this.searchValue = '';
         this.getMoviesData();
       } else if (res.value) {
         this.searchValue = res.value;

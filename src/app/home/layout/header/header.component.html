@@ -4,8 +4,7 @@
         <i class="fa fa-play" aria-hidden="true"></i>
     </div>
     <div class="club" *ngIf="isSearch">
-        <input type="text" #search placeholder="Search Movies" name="search" (keyup)="searchMethod($event);"
-            (search)="clearSearch();">
+        <input type="text" #search placeholder="Search Movies" name="search" (keyup)="searchMethod($event);">
         <button type="submit"><i class="fas fa-search"></i></button>
     </div>
 </div>

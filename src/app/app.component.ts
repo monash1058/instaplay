@@ -11,9 +11,9 @@ export class AppComponent {
   loadingSpninerHide = true;
   constructor(private homeser: HomeService, private cdRef: ChangeDetectorRef){}
   ngOnInit(): void{
-    // this.homeser.loadingSpinner.subscribe((data: boolean) => {
-    //   this.loadingSpninerHide = data;
-    //   this.cdRef.detectChanges();
-    // });
+    this.homeser.loadingSpinner.subscribe((data: boolean) => {
+      this.loadingSpninerHide = data;
+      this.cdRef.detectChanges();
+    });
   }
 }

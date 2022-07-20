@@ -1,4 +1,4 @@
-<div class="topnav">
+<!-- <div class="topnav">
     <div class="container-header">
         <a><img routerLink="/home/movies" src="../../../../assets/images/title.png" alt=""></a>
         <i class="fa fa-play" aria-hidden="true"></i>
@@ -7,4 +7,13 @@
         <input type="text" #search placeholder="Search Movies" name="search" (keyup)="searchMethod($event);">
         <button type="submit"><i class="fas fa-search"></i></button>
     </div>
-</div>
+</div> -->
+
+<nav class="navbar bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/home/movies">Movies</a>
+        <form class="d-flex" role="search" *ngIf="isSearch">
+          <input class="form-control me-2" type="search" #search placeholder="Search Movies" name="search" (keyup)="searchMethod($event);">
+        </form>
+    </div>
+  </nav>

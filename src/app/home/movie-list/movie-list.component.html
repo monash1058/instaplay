@@ -1,45 +1,123 @@
-<div class="banner">
-    <img src="../../../assets/images/banner.jpg" />
+<div class="container-fluid">
+  <ngb-carousel>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img
+          class="img-fluid"
+          src="../../../assets/images/banner.jpg"
+          alt="Random first slide"
+        />
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img
+          class="img-fluid"
+          src="../../../assets/images/banner.jpg"
+          alt="Random second slide"
+        />
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img
+          class="img-fluid"
+          src="../../../assets/images/banner.jpg"
+          alt="Random third slide"
+        />
+      </div>
+    </ng-template>
+  </ngb-carousel>
 </div>
-<div class="trending-sort">
-    <div class="container-right">
-        <h1>Trending</h1>
-    </div>
-    <div class="container-left">
-        <div class="navigation" (click)="show = !show"><i class="fas fa-sort-alt"></i></div>
-        <div class="content" (click)="show = !show">Sort by Ratings</div>
-        <div class="sidebar"><i class="fas fa-caret-down"></i></div>
-        <div class="filter" *ngIf="show">
-            <a (click)="sortHigh()">High to low</a>
-            <a (click)="sortLow()">Low to High</a>
-        </div>
-    </div>
-</div>
-<div class="center">
-    <div class="row">
-        <div class="column" *ngFor="let movie of moviesData | paginate: { itemsPerPage: count, currentPage: p }"
-            [routerLink]="['/home/details', movie.id]">
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="{{movie.title}}">
-                </div>
-                <div class="container">
-                    <div class="left-half">
-                        <p [routerLink]="['/home/details', movie.id]">{{movie.title}}</p>
-                        <div class="package-rating-detail">
-                            <i class="fa fa-star checked"></i>
-                            <p>{{movie.vote_average}} / 10</p>
-                        </div>
-                    </div>
-                    <div class="right-half" [routerLink]="['/home/details', movie.id]">
-                        <i class="fas fa-play"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="pagination">
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+<section id="heading">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6 mt-4">
+        <div class="float-start"><h1>Trending</h1></div>
+      </div>
+      <div class="col-6 mt-4">
+        <div class="float-end">
+          <div class="container-left">
+            <div class="navigation" (click)="show = !show">
+              <i class="fas fa-angle-double-up"></i>
+            </div>
+            <div ngbDropdown class="dropdown show">
+              <a
+                class="btn btn-secondary dropdown-toggle"
+                role="button"
+                ngbDropdownToggle
+                >Sort by Ratings</a
+              >
+              <div
+                class="dropdown-menu"
+                ngbDropdownMenu
+                aria-labelledby="dropdownMenuLink"
+              >
+                <a class="dropdown-item" ngbDropdownItem (click)="sortHigh()"
+                  >Hight to Low</a
+                >
+                <a class="dropdown-item" ngbDropdownItem (click)="sortLow()"
+                  >Low to High</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+</section>
+
+<section id="card-section">
+  <div class="container-fluid">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div
+        class="col"
+        *ngFor="
+          let movie of moviesData
+            | paginate: { itemsPerPage: count, currentPage: p }
+        "
+        [routerLink]="['/home/details', movie.id]"
+      >
+        <div class="card h-100">
+          <img
+            src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"
+            class="card-img-top"
+            alt="{{ movie.title }}"
+          />
+          <div class="card-body">
+            <h5 class="card-title" [routerLink]="['/home/details', movie.id]">
+              {{ movie.title }}
+            </h5>
+            <div class="row mt-5">
+              <div class="col-6">
+                <div class="row star-average">
+                  <div class="col-2">
+                    <i class="fa fa-star checked"></i>
+                  </div>
+                  <div class="col-10">
+                    <div class="average">
+                      <p>{{ movie.vote_average }} / 10</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div
+                  class="left-play"
+                  [routerLink]="['/home/details', movie.id]"
+                >
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pagination">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</section>

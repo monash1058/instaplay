@@ -9,6 +9,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     CommonModule,
     HomeRoutingModule,
+    NgbModule,
     SharedModule,
     NgxPaginationModule
   ]

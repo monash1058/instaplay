@@ -13,6 +13,8 @@ export class MovieListComponent implements OnInit {
   p: any = 1;
   count: any = 10;
   show: boolean = false;
+  showNavigationArrows = false;
+  showNavigationIndicators = false;
   constructor(private homeService: HomeService) {
     this.homeService.searchBoolean.next(true);
   }

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <ngb-carousel>
+  <ngb-carousel [showNavigationIndicators]="showNavigationIndicators">
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
         <img
@@ -74,12 +74,8 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <div
         class="col"
-        *ngFor="
-          let movie of moviesData
-            | paginate: { itemsPerPage: count, currentPage: p }
-        "
-        [routerLink]="['/home/details', movie.id]"
-      >
+        *ngFor="let movie of moviesData | paginate: { itemsPerPage: count, currentPage: p }"
+        [routerLink]="['/home/details', movie.id]">
         <div class="card h-100">
           <img
             src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"

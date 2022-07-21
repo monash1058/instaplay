@@ -1,4 +1,4 @@
-<section class="details-container">
+<!-- <section class="details-container">
     <div class="left-half-details">
         <div class="arrow" [routerLink]="['/home/movies']">
             <i class="fas fa-arrow-left" ></i>
@@ -21,5 +21,48 @@
     </div>
     <div class="right-half-details">
         <img src="https://image.tmdb.org/t/p/w500{{MovieDetails.poster_path}}" alt="{{MovieDetails.title}}">
+    </div>
+  </section> -->
+
+  <section id="detail-page">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-12 my-2 mt-5">
+            <div class="position-relative">
+                <div class="position-absolute top-0 start-0" [routerLink]="['/home/movies']">
+                    <i class="fas fa-arrow-left" ></i>
+                </div>
+              </div>
+              <h1>{{MovieDetails.original_title}}</h1>
+            <p class="rates">Rating : <span>{{MovieDetails.vote_average}} / 10</span></p>
+            <p class="para">{{MovieDetails.overview}}</p>
+            <div class="row">
+                <div class="col-6">
+                    <p>Releasing Date</p>
+                    <p>Orginal Language</p>
+                </div>
+                <div class="col-6">
+                    <p>{{MovieDetails.release_date| date:'YYYY'}}</p>
+                    <div class="row">
+                        <div *ngFor="let language of MovieDetails.spoken_languages" class="col-sm-3 language">      
+                            <p>{{language.name}},</p>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        <!-- <div class="split">
+            <div class="left-split">
+               
+            </div>
+            
+            <div class="right-split">
+              
+            </div>
+        </div> -->
+        </div>
+        <div class="col-6 col-md-6 col-12">
+            <img class="img-fluid" src="https://image.tmdb.org/t/p/w500{{MovieDetails.poster_path}}" alt="{{MovieDetails.title}}">
+        </div>
+      </div>
     </div>
   </section>

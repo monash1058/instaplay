@@ -9,7 +9,10 @@ import { HomeService } from '../home.service';
 })
 export class MovieDetailComponent implements OnInit {
   movieId = this.router.snapshot.params['id'];
-  MovieDetails: any = {};
+  MovieDetails: any = [];
+  language:any = [];
+  value: any;
+  details: any;
   constructor(
     private router: ActivatedRoute,
     private homeService: HomeService,
@@ -18,9 +21,8 @@ export class MovieDetailComponent implements OnInit {
    }
 
   ngOnInit(): void {
-   this.homeService.getMovieDetails(this.movieId).subscribe((data: {}) => {
+   this.homeService.getMovieDetails(this.movieId).subscribe((data: any) => {
       this.MovieDetails = data;
-      console.log(data);
     });
   }
 

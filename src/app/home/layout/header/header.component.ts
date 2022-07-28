@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HomeService } from '../../home.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { HomeService } from '../../home.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent{
   isSearch: boolean = true;
 
   constructor(private homeService: HomeService) {
@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
   searchMethod(eve: any) {
     console.log(eve.target.value);
     this.homeService.searchData.next({ value: eve.target.value });
